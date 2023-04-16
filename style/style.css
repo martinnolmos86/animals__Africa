@@ -1,179 +1,58 @@
-/* reset styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* global styles */
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* header section */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-  }
-  
-  .logo {
-    width: 100px;
-  }
-  
-  .nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .nav__item {
-    margin-left: 20px;
-  }
-  
-  /* animal info section */
-  .animal-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 40px 0;
-  }
-  
-  .animal-info__item {
-    margin: 20px;
-  }
-  
-  .animal-info__image {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .animal-info__title {
-    margin-top: 10px;
-    font-size: 24px;
-  }
-  
-  .animal-info__description {
-    margin-top: 10px;
-    line-height: 1.5;
-  }
-  
-  /* animal photos section */
-  .animal-photos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 40px 0;
-  }
-  
-  .animal-photos__item {
-    margin: 20px;
-  }
-  
-  .animal-photos__image {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  /* adoption section */
-  .adoption {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 40px 0;
-  }
-  
-  .adoption__title {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .adoption__form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .adoption__input-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .adoption__input-label {
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .adoption__input {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-  }
-  
-  .adoption__button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #005c5c;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .adoption__button:hover {
-    background-color: #00a5a5;
-  }
+body {
+  background-color: #f1f1f1;
+}
 
+.calculator {
+  width: 300px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
+.input {
+  font-size: 2em;
+}
 
+.display {
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #eee;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 24px;
+}
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 20px;
-  }
-  
-  .footer__logo {
-    width: 30%;
-  }
-  
-  .footer__social-media {
-    display: flex;
-    justify-content: flex-end;
-    width: 30%;
-  }
-  
-  .footer__social-media-item {
-    margin-left: 20px;
-    font-size: 1.2rem;
-  }
-  
-  .footer__social-media-item:first-child {
-    margin-left: 0;
-  }
-  
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 20px;
+}
+
+button {
+  height: 60px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.operator {
+  background-color: #fe952a;
+  color: #fff;
+}

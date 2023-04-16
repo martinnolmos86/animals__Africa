@@ -1,104 +1,101 @@
-const CROSS = 'X';
-const CIRCLE = 'O';
-const EMPTY = ' ';
+// Initialize variables
+let currentResult = 0;
+let currentInput = '0';
+let operator = null;
+let waitingForSecondOperand = false;
 
-let board;
-let currentPlayer;
-let gameStatus;
+// Get DOM elements
+const resultOutput = document.querySelector('.calculator__output--result');
+const inputOutput = document.querySelector('.calculator__output--input');
+const calculatorButtons = document.querySelectorAll('.calculator__button');
 
-const cells = document.querySelectorAll('.cell');
-const message = document.querySelector('.message');
-const restartButton = document.querySelector('.restart-button');
-
-startGame();
-
-function startGame() {
-  board = [
-    [EMPTY, EMPTY, EMPTY],
-    [EMPTY, EMPTY, EMPTY],
-    [EMPTY, EMPTY, EMPTY]
-  ];
-  currentPlayer = CROSS;
-  gameStatus = false;
-  message.textContent = `It's ${currentPlayer}'s turn`;
-
-  cells.forEach(cell => {
-    cell.textContent = EMPTY;
-    cell.addEventListener('click', handleCellClick, { once: true });
-  });
-
-  restartButton.addEventListener('click', startGame);
+// Function to update the result output
+function updateResultOutput() {
+  resultOutput.textContent = currentResult;
 }
 
-function handleCellClick(event) {
-  const row = parseInt(event.target.dataset.row);
-  const column = parseInt(event.target.dataset.column);
-
-  if (board[row][column] !== EMPTY || gameStatus) {
-    return;
-  }
-
-  board[row][column] = currentPlayer;
-  event.target.textContent = currentPlayer;
-
-  if (checkWin()) {
-    message.textContent = `${currentPlayer} wins!`;
-    gameStatus = true;
-    return;
-  }
-
-  if (checkTie()) {
-    message.textContent = `It's a tie!`;
-    gameStatus = true;
-    return;
-  }
-
-  currentPlayer = currentPlayer === CROSS ? CIRCLE : CROSS;
-  message.textContent = `It's ${currentPlayer}'s turn`;
+// Function to update the input output
+function updateInputOutput() {
+  inputOutput.textContent = currentInput;
 }
 
-function checkWin() {
-  for (let i = 0; i < 3; i++) {
-    if (
-      board[i][0] === currentPlayer &&
-      board[i][1] === currentPlayer &&
-      board[i][2] === currentPlayer
-    ) {
-      return true;
+// Function to handle number button clicks
+function handleNumberButtonClick(number) {
+  if (currentInput === '0' && number !== '.') {
+    currentInput = '';
+  }
+
+  if (waitingForSecondOperand) {
+    currentInput = '';
+    waitingForSecondOperand = false;
+  }
+
+  currentInput += number;
+  updateInputOutput();
+}
+
+// Function to handle operator button clicks
+function handleOperatorButtonClick(nextOperator) {
+  const inputValue = parseFloat(currentInput);
+
+  if (operator && waitingForSecondOperand) {
+    operator = nextOperator;
+    return;
+  }
+
+  if (operator === '+') {
+    currentResult += inputValue;
+  } else if (operator === '-') {
+    currentResult -= inputValue;
+  } else if (operator === '*') {
+    currentResult *= inputValue;
+  } else if (operator === '/') {
+    currentResult /= inputValue;
+  } else {
+    currentResult = inputValue;
+  }
+
+  currentInput = '';
+  waitingForSecondOperand = true;
+  operator = nextOperator;
+  updateResultOutput();
+  updateInputOutput();
+}
+
+// Function to handle decimal button clicks
+function handleDecimalButtonClick() {
+  if (!currentInput.includes('.')) {
+    currentInput += '.';
+  }
+
+  updateInputOutput();
+}
+
+// Function to handle clear button click
+function handleClearButtonClick() {
+  currentResult = 0;
+  currentInput = '0';
+  operator = null;
+  waitingForSecondOperand = false;
+  updateResultOutput();
+  updateInputOutput();
+}
+
+// Loop through calculator buttons and add click event listeners
+calculatorButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (button.classList.contains('calculator__button--number')) {
+      handleNumberButtonClick(button.textContent);
+    } else if (button.classList.contains('calculator__button--operator')) {
+      handleOperatorButtonClick(button.textContent);
+    } else if (button.classList.contains('calculator__button--decimal')) {
+      handleDecimalButtonClick();
+    } else if (button.classList.contains('calculator__button--clear')) {
+      handleClearButtonClick();
     }
-
-    if (
-      board[0][i] === currentPlayer &&
-      board[1][i] === currentPlayer &&
-      board[2][i] === currentPlayer
-    ) {
-      return true;
-    }
-  }
-
-  if (
-    board[0][0] === currentPlayer &&
-    board[1][1] === currentPlayer &&
-    board[2][2] === currentPlayer
-  ) {
-    return true;
-  }
-
-  if (
-    board[0][2] === currentPlayer &&
-    board[1][1] === currentPlayer &&
-    board[2][0] === currentPlayer
-  ) {
-    return true;
-  }
-
-  return false;
-}
-
-function checkTie() {
-  return board.every(row => {
-    return row.every(cell => {
-      return cell !== EMPTY;
-    });
   });
-}
+});
+
+// Update result and input output on page load
+updateResultOutput();
+updateInputOutput();
