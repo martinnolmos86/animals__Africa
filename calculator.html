@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animales de África</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__logo">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <nav class="header__nav">
+            <ul class="header__list">
+                <li class="header__item"><a href="#">Inicio</a></li>
+                <li class="header__item"><a href="#">Animales</a></li>
+                <li class="header__item"><a href="#">Historias de éxito</a></li>
+                <li class="header__item"><a href="#">Adopción</a></li>
+                <li class="header__item"><a href="#">Contacto</a></li>
+            </ul>
+            <div class="header__search">
+                <input type="text" placeholder="Buscar">
+                <button><img src="img/search-icon.png" alt="Buscar"></button>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="about">
+            <div class="about__info">
+                <h1 class="about__title">Animales de África</h1>
+                <p class="about__text">África es conocida por su rica fauna y la variedad de animales que viven en ella.
+                    Desde los elefantes y leones hasta los gorilas y jirafas, los animales de África son verdaderamente
+                    fascinantes.</p>
+            </div>
+            <div class="about__image">
+                <img src="img/elephant.jpg" alt="Elefante">
+            </div>
+        </section>
+        <section class="gallery">
+            <h2 class="gallery__title">Galería de animales</h2>
+            <div class="gallery__grid">
+                <div class="gallery__item">
+                    <img src="img/lion.jpg" alt="León">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/tiger.jpg" alt="Tigre">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/giraffe.jpg" alt="Jirafa">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/monkey.jpg" alt="Mono">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/toucan.jpg" alt="Tucán">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/elephant.jpg" alt="Elefante">
+                </div>
+            </div>
+        </section>
+        <section class="adoption">
+            <div class="container">
+                <h2 class="section-title">¡Adopta un animal!</h2>
+                <p>En nuestra página también podrás encontrar animales domésticos que necesitan un hogar.</p>
+                <form class="adoption-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Nombre completo:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="animal">Animal que deseas adoptar:</label>
+                        <select id="animal" name="animal" required>
+                            <option value="" disabled selected>Selecciona un animal</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="conejo">Conejo</option>
+                            <option value="hamster">Hamster</option>
+                            <option value="tortuga">Tortuga</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__logo">
+            <img src="ruta/al/logo.png" alt="Logo">
+        </div>
+        <ul class="footer__social-media">
+            <li class="footer__social-media-item"><a href="#" target="_blank">Instagram</a></li>
+            <li class="footer__social-media-item"><a href="#" target="_blank">Facebook</a></li>
+            <li class="footer__social-media-item"><a href="#" target="_blank">YouTube</a></li>
+        </ul>
+    </footer>
+
+</body>
